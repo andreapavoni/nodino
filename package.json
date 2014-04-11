@@ -1,0 +1,20 @@
+{
+  "name": "nodino",
+  "description": "nodino",
+  "version": "0.0.1",
+  "author": "Andrea Pavoni <andrea.pavoni@gmail.com> (http://andreapavoni.com)",
+  "private": true,
+  "scripts": {
+    "start": "node --harmony ./bin/www"
+  },
+  "dependencies": {
+    "express": "~4.0.0",
+    "static-favicon": "~1.0.0",
+    "morgan": "~1.0.0",
+    "cookie-parser": "~1.0.1",
+    "body-parser": "~1.0.0",
+    "debug": "~0.7.4",
+    "jade": "~1.3.0",
+    "redis": "^0.10.1"
+  }
+}
