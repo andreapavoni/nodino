@@ -5,7 +5,7 @@ module.exports = function(router) {
     res.json(200, {'hello': 'world'});
   });
 
-  router.get('/api/:name', function(req, res) {
+  router.get('/:name', function(req, res) {
     res.json(200, {'hello': req.params.name});
   });
 }

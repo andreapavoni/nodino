@@ -2,7 +2,7 @@
 
 // Main setup
 const
-  redis = require('redis').createClient(),
+  // redis = require('redis').createClient(),
   express = require('express'),
   path = require('path'),
   favicon = require('static-favicon'),
@@ -12,8 +12,8 @@ const
   app = express();
 
 // Controllers
-const
-  main_controller = require('./controllers/main')(app);
+// var main_controller = require('./controllers/main')(app);
+require('./controllers/main')(app);
 
 // Views
 app.set('views', path.join(__dirname, 'views'));
@@ -26,10 +26,10 @@ app.use(bodyParser.urlencoded());
 app.use(cookieParser());
 
 // Static assets
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, 'assets')));
 
 // Routing
-app.use('/', main_controller);
+// app.use('/', main_controller);
 
 /// catch 404 and forwarding to error handler
 app.use(function(req, res, next) {
@@ -40,9 +40,9 @@ app.use(function(req, res, next) {
 
 /// Error handlers
 
-redis.on("error", function (err) {
-  console.log("Redis error: " + err);
-});
+//redis.on("error", function (err) {
+  //console.log("Redis error: " + err);
+//});
 
 // development env:
 if (app.get('env') === 'development') {
