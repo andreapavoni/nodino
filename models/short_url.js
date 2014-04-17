@@ -2,10 +2,7 @@
 
 module.exports = function (redis) {
   var redisKey = 'nodino';
-  var redisMulti = redis.multi();
-
   var keyId = function(id) { return (redisKey + '.id|' + id); };
-  var keyUrl = function(url) { return (redisKey + '.url|' + url); };
 
   var base62 = function (number) {
     var chars = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz'.split(''),
@@ -58,25 +55,13 @@ module.exports = function (redis) {
       });
     },
 
-    findByUrl: function(url, cbOk, cbErr) {
-      redis.get(keyUrl(url), function(err, id) {
-        if (id) {
-          cbOk({url: url, id: id});
-        } else {
-          cbErr(Error('Url not found.'));
-        }
-      });
-    },
-
     create: function(url, cbOk, cbErr) {
       if (!validateUrl(url)) {
         return cbErr(Error('Url not valid.'));
       }
 
       generateId(function(err, id) {
-        redisMulti.set(keyId(id), url);
-        redisMulti.set(keyUrl(url), id);
-        redisMulti.exec(function (err, data) {
+        redis.set(keyId(id), url, function (err, data) {
           if (!err) {
             return cbOk({url: url, id: id});
           } else {
