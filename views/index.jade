@@ -1,5 +1,10 @@
 extends layout
 
 block content
-  h1= title
-  p Welcome to #{title}
+  h1 Nodino
+  h3 URL shortener built with NodeJS and Redis
+
+  form(action='/' method='POST')
+    p URL
+    input(type='text' name='url', value='')
+    button(type='submit' value='short')
