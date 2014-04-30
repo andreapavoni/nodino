@@ -11,16 +11,17 @@ module.exports = function(router) {
 
   router.post('/', function(req, res) {
     shortener.create(req.body.url, function(data) {
-      res.redirect('/ok');
+      res.json({error: null, data: data});
     }, function(err) {
-      res.redirect('/err');
+      res.json({error: err.message, data: null});
     });
   });
 
-  router.get('/short/:id', function(req, res) {
+  router.get('/:id', function(req, res) {
     shortener.findById(req.params.id, function(data) {
       res.redirect(data.url);
     }, function(err) {
+      req.flash('alert', JSON.stringify(err.message));
       res.redirect('/');
     });
   });

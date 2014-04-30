@@ -4,4 +4,8 @@ html
     title Nodino - URL shortener built with NodeJS and Redis
     link(rel='stylesheet', href='/stylesheets/style.css')
   body
+    - if (messages.alert)
+      .flash.alert
+        span= messages.alert
+
     block content

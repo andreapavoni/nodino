@@ -50,14 +50,14 @@ module.exports = function (redis) {
         if (url) {
           cbOk({url: url, id: id});
         } else {
-          cbErr(Error('Id not found.'));
+          cbErr((new Error('Id not found.')));
         }
       });
     },
 
     create: function(url, cbOk, cbErr) {
       if (!validateUrl(url)) {
-        return cbErr(Error('Url not valid.'));
+        return cbErr((new Error('Url not valid.')));
       }
 
       generateId(function(err, id) {

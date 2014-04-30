@@ -8,6 +8,8 @@ const
   logger = require('morgan'),
   cookieParser = require('cookie-parser'),
   bodyParser = require('body-parser'),
+  session = require('express-session'),
+  flash = require('express-flash'),
   app = express(),
   env = app.get('env');
 
@@ -20,6 +22,8 @@ app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded());
 app.use(cookieParser());
+app.use(session({secret: 'keyboard cat', key: 'sid', cookie: {maxAge: 60000}}));
+app.use(flash());
 
 // Controllers
 require('./controllers/main')(app);
