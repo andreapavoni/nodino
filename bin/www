@@ -1,9 +1,8 @@
 #!/usr/bin/env node --harmony
-var debug = require('debug')('nodino');
-var app = require('../app');
+var
+  app = require('../app'),
+  config = require('../config');
 
-app.set('port', process.env.PORT || 4000);
-
-var server = app.listen(app.get('port'), function() {
+var server = app.listen(config.port, function() {
   console.log('Express server listening on port ' + server.address().port);
 });

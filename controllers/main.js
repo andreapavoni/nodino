@@ -1,10 +1,9 @@
 'use strict';
 
-const
-  redis = require('redis').createClient(),
-  shortener = require('../models/shortener')(redis);
+module.exports = function(router, redis) {
+  var
+    shortener = require('../models/shortener')(redis);
 
-module.exports = function(router) {
   router.get('/', function(req, res) {
     res.render('index');
   });
