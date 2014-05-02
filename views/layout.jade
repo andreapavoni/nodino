@@ -1,11 +1,35 @@
 doctype html
-html
+html(lang="en")
   head
     title Nodino - URL shortener built with NodeJS and Redis
+    link(rel='stylesheet' href='//ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/themes/smoothness/jquery-ui.css')
     link(rel='stylesheet', href='/stylesheets/application.css')
   body
-    - if (messages.alert)
-      .flash.alert
-        span= messages.alert
+    .container
 
-    block content
+      header.main-header
+        h1.main-header__title Nodino
+        p.main-header__description
+          | A simple URL shortener built with
+          a(href='http://nodejs.org')  NodeJS
+          |  and
+          a(href='http://redis.io')  Redis
+
+      - if (messages.alert)
+        .flash.alert
+          span= messages.alert
+
+      block content
+
+
+      footer.main-footer
+        p
+          | handcrafted with
+          span.heart  ♥
+          |  by
+          a(href='http://andreapavoni.com')  Andrea Pavoni
+
+  script(type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js")
+  script(type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/jquery-ui.min.js")
+  script(type="text/javascript" src="/javascripts/jquery.flip.js")
+  script(type="text/javascript" src="/javascripts/application.js")

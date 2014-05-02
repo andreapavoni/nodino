@@ -5,7 +5,8 @@ module.exports = function (redis) {
 
   return {
     index: function index(req, res) {
-      res.render('index');
+      var host = req.protocol + '://' + req.host;
+      res.render('index', {host: host});
     },
 
     create: function login(req, res) {

@@ -50,7 +50,7 @@ module.exports = function (redis) {
     },
 
     create: function(url, cbOk, cbErr) {
-      if (!validUrl.isUri(url)) {
+      if (!validUrl.isWebUri(url)) {
         return cbErr((new Error('Url not valid.')));
       }
 

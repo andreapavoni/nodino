@@ -3,6 +3,7 @@
 $color-green = #B3CC57
 $color-light-green = #ECF081
 $color-dark-green = #445018
+$color-red = #d62b00
 
 $font-default = 'Roboto', sans-serif
 
@@ -20,7 +21,6 @@ a
 
   &:hover
     text-decoration: underline
-
 
 .container
   max-width: 960px
@@ -40,14 +40,25 @@ a
     text-align: center
     font-size: 12px
 
+    &:hover
+      .heart
+        font-size: 160%;
+
+    .heart
+      color: $color-red
+
   .shortener
     width: 780px
     border: solid thin $color-green
     background-color: $color-light-green
     border-radius: 5px
-    padding: 10px
+    padding: 15px
 
-    .shortener__input--url
+    &.shortened
+      border: solid thin $color-dark-green
+      background-color: $color-green
+
+    .shortener__url--input, .shortener__url--output
       width: 690px
       border: solid thin $color-green
       padding: 10px 5px
@@ -56,7 +67,16 @@ a
       border-top-left-radius: 3px
       border-bottom-left-radius: 3px
 
-    .shortener__button--submit
+      &:focus
+        outline: none;
+        border: solid thin $color-dark-green
+
+    .shortener__url--output
+      color: $color-dark-green
+      border: solid thin $color-light-green
+      border-right: none
+
+    .shortener__button--submit, .shortener__button--revert
       font-family: $font-default
       background-color: $color-green
       border: solid thin $color-green
@@ -69,3 +89,28 @@ a
       border-top-right-radius: 3px
       border-bottom-right-radius: 3px
       text-transform: uppercase
+
+    .shortener__button--submit
+      &:focus
+        outline: none;
+        border: solid thin $color-green
+
+    .shortener__button--revert
+      border: solid thin $color-light-green
+      background-color: $color-light-green
+      color: $color-dark-green
+
+      &:focus
+        outline: none;
+        border: solid thin $color-light-green
+
+    .shortener__notification
+      font-size: 0.8em
+      padding: 5px 10px
+      margin-bottom: -5px
+      display: block
+      color: $color-dark-green
+
+      &.error
+        color: $color-red
+
