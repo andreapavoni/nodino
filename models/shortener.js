@@ -1,5 +1,7 @@
 'use strict';
 
+const validUrl = require('valid-url');
+
 module.exports = function (redis) {
   var redisKey = 'nodino';
   var keyId = function(id) { return (redisKey + '.id|' + id); };
@@ -36,14 +38,6 @@ module.exports = function (redis) {
     });
   };
 
-  var validateUrl = function(url) {
-    var regex = /(^$)|(^(http|https):\/\/[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}(([0-9]{1,5})?\/.*)?$)/;
-
-    if (typeof(url) === 'string' && url.match(regex)) { return true; }
-
-    return false;
-  };
-
   return {
     findById: function(id, cbOk, cbErr) {
       redis.get(keyId(id), function(err, url) {
@@ -56,7 +50,7 @@ module.exports = function (redis) {
     },
 
     create: function(url, cbOk, cbErr) {
-      if (!validateUrl(url)) {
+      if (!validUrl.isUri(url)) {
         return cbErr((new Error('Url not valid.')));
       }
 
