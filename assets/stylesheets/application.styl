@@ -1,5 +1,71 @@
+@import url("http://fonts.googleapis.com/css?family=Roboto:400,700")
+
+$color-green = #B3CC57
+$color-light-green = #ECF081
+$color-dark-green = #445018
+
+$font-default = 'Roboto', sans-serif
+
+html
+  font-family: $font-default
+
 body
-  padding 50px
+  padding: 50px
 
 a
-  color #00B7FF
+  color: $color-dark-green
+  text-decoration: none
+  font-weight: bold
+  margin
+
+  &:hover
+    text-decoration: underline
+
+
+.container
+  max-width: 960px
+  margin: 0 auto
+
+  .main-header
+    .main-header__title
+      margin-bottom: 0.5em
+
+    .main-header__description
+      margin-top: 0
+
+  .main-footer
+    margin: 0 auto
+    position: absolute
+    bottom: 1em
+    text-align: center
+    font-size: 12px
+
+  .shortener
+    width: 780px
+    border: solid thin $color-green
+    background-color: $color-light-green
+    border-radius: 5px
+    padding: 10px
+
+    .shortener__input--url
+      width: 690px
+      border: solid thin $color-green
+      padding: 10px 5px
+      font-size: 18px
+      border-right: none
+      border-top-left-radius: 3px
+      border-bottom-left-radius: 3px
+
+    .shortener__button--submit
+      font-family: $font-default
+      background-color: $color-green
+      border: solid thin $color-green
+      color: $color-dark-green
+      padding: 10px 5px
+      width: 78px
+      font-size: 16px
+      font-weight: bold
+      border-left: none
+      border-top-right-radius: 3px
+      border-bottom-right-radius: 3px
+      text-transform: uppercase

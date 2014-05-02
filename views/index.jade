@@ -1,10 +1,20 @@
 extends layout
 
 block content
-  h1 Nodino
-  h3 URL shortener built with NodeJS and Redis
+  .container
+    header.main-header
+      h1.main-header__title Nodino
+      p.main-header__description
+        | A simple URL shortener built with
+        a(href='http://nodejs.org')  NodeJS
+        |  and
+        a(href='http://redis.io')  Redis
 
-  form(action='/' method='POST')
-    p URL
-    input(type='text' name='url', value='')
-    button(type='submit' value='short')
+    form.shortener(action='/' method='POST')
+      input.shortener__input--url(type='text' name='url', value='')
+      button.shortener__button--submit(type='submit') Go
+
+    footer.main-footer
+      p
+        | hadcrafted with ♥ by
+        a(href='http://andreapavoni.com')  Andrea Pavoni
