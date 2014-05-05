@@ -3,16 +3,15 @@
 var
   validUrl = require('valid-url'),
   config = require(__dirname + '/../config'),
-  redis = require('redis').createClient(config.redis.port, config.redis.host);
+  redis = require('redis-url').connect(config.redis);
 
 var redisKey = 'nodino';
 var keyId = function(id) { return (redisKey + '.id|' + id); };
 
 var base62 = function (number) {
 
-  var
-    chars = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz'.split(''),
-    encoded = '';
+  var chars = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz'.split('');
+  var encoded = '';
 
   if (typeof(number) !== 'number' || number === 0) { return '0'; }
 
