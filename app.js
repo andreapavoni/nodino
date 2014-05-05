@@ -10,7 +10,6 @@ const
   cookieParser = require('cookie-parser'),
   bodyParser = require('body-parser'),
   session = require('express-session'),
-  flash = require('express-flash'),
   httpErrors = require('./middlewares/http-errors'),
   app = express(),
   redis = require('redis').createClient(config.redis.port, config.redis.host),
@@ -24,7 +23,6 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded());
 app.use(cookieParser());
 app.use(session({secret: config.secret, key: 'session_id', cookie: {maxAge: 60000}}));
-app.use(flash());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(stylus.middleware({
   src: __dirname + '/assets/stylesheets/',
