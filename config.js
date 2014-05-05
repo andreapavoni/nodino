@@ -1,6 +1,6 @@
 'use strict';
 
-const config = {
+module.exports = {
   port: process.env.PORT || 4000,
   secret: process.env.SECRET || 'secret',
   redis: {
@@ -8,5 +8,3 @@ const config = {
     port: process.env.REDIS_PORT || null
   }
 };
-
-module.exports = config;

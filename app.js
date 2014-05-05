@@ -12,7 +12,6 @@ const
   session = require('express-session'),
   httpErrors = require('./middlewares/http-errors'),
   app = express(),
-  redis = require('redis').createClient(config.redis.port, config.redis.host),
   stylus = require('stylus'),
   env = app.get('env');
 
@@ -39,7 +38,7 @@ app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
 
 // Controllers
-var mainController = require('./controllers/main')(redis);
+var mainController = require('./controllers/main');
 
 // Routes
 app.get('/', mainController.index);
@@ -49,9 +48,5 @@ app.post('/', mainController.create);
 // Error handlers
 app.use(httpErrors.notFound);
 app.use(httpErrors.error);
-
-redis.on("error", function (err) {
-  console.log("Redis error: " + err);
-});
 
 module.exports = app;

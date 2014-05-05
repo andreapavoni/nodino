@@ -22,6 +22,7 @@ describe('Web app', function() {
       var url = 'http://google.com';
 
       request.post(host).send({url: url }).end(function(error, res) {
+        expect(res).to.exist;
         expect(res.status).to.equal(200);
         expect(res.body.error).to.equal(null);
         expect(res.body.data.url).to.equal(url);
@@ -34,6 +35,7 @@ describe('Web app', function() {
       var url = 'wrong';
 
       request.post(host).send({url: url }).end(function(error, res) {
+        expect(res).to.exist;
         expect(res.status).to.equal(200);
         expect(res.body.error).not.to.be(null);
         expect(res.body.data).to.be(null);
