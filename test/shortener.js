@@ -1,11 +1,12 @@
 'use strict';
 
 var
+  config = require(__dirname + '/../config')('test'),
   expect = require('expect.js'),
-  shortener = require('../models/shortener');
-
+  shortener = require('../models/shortener')(config);
 
 describe('Shortener', function() {
+
   var input = {url: 'http://google.com', id: 'abc'};
 
   var output = {
@@ -14,6 +15,12 @@ describe('Shortener', function() {
       invalid: 'Url not valid.'
     }
   };
+
+  after(function(done) {
+    var redis = require('redis-url').connect(config.redis);
+    redis.flushall();
+    done();
+  });
 
   describe('findById()', function() {
     it('returns JSON data when id is not found', function(done) {

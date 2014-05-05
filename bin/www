@@ -1,7 +1,7 @@
 #!/usr/bin/env node --harmony
 var
   app = require('../app'),
-  config = require('../config');
+  config = require('../config')(app.settings.env);
 
 var server = app.listen(config.port, function() {
   console.log('Express server listening on port ' + server.address().port);

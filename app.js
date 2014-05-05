@@ -2,7 +2,6 @@
 
 // Main setup
 const
-  config = require('./config'),
   express = require('express'),
   path = require('path'),
   favicon = require('static-favicon'),
@@ -13,7 +12,8 @@ const
   httpErrors = require('./middlewares/http-errors'),
   app = express(),
   stylus = require('stylus'),
-  env = app.get('env');
+  env = app.get('env'),
+  config = require('./config')(env);
 
 // Middlewares
 app.use(favicon());
@@ -38,7 +38,7 @@ app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
 
 // Controllers
-var mainController = require('./controllers/main');
+var mainController = require('./controllers/main')(config);
 
 // Routes
 app.get('/', mainController.index);

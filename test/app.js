@@ -2,10 +2,15 @@
 
 var request = require('superagent');
 var expect = require('expect.js');
-
-var host = 'http://localhost:4000';
+var config = require(__dirname + '/../config')('test');
+var host = 'http://localhost:' + config.port;
 
 describe('Web app', function() {
+  after(function(done) {
+    var redis = require('redis-url').connect(config.redis);
+    redis.flushall();
+    done();
+  });
 
   describe('GET /', function() {
     it('works', function(done) {
