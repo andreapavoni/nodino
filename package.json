@@ -5,8 +5,15 @@
   "author": "Andrea Pavoni <andrea.pavoni@gmail.com> (http://andreapavoni.com)",
   "private": true,
   "scripts": {
-    "start": "node --harmony ./bin/www"
+    "start": "node --harmony ./bin/www",
+    "test": "node --harmony ./node_modules/.bin/mocha"
   },
+  "devDependencies": {
+    "superagent": "~0.18.0",
+    "expect.js": "~0.3.1",
+    "mocha": "~1.18.2"
+  },
+
   "dependencies": {
     "express": "~4.0.0",
     "static-favicon": "~1.0.0",
