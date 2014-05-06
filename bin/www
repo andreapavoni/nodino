@@ -5,4 +5,7 @@ var
 
 var server = app.listen(config.port, function() {
   console.log('Express server listening on port ' + server.address().port);
+  if (config.safeMode) {
+    console.log('SAFE MODE is active.');
+  }
 });

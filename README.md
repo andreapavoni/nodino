@@ -1,6 +1,9 @@
 # Nodino
 An experiment to make a simple web app using [ExpressJS](http://expressjs.com), [React](http://facebook.github.io/react/) and [Redis](http://redis.io).
 
+## Demo
+You can find a working demo [here](http://nodino.herokuapp.com/).
+
 ## Installation
 
 You'll need a working installation of Redis and NodeJS, then:

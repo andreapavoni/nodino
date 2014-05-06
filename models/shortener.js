@@ -60,13 +60,20 @@ module.exports = function(config) {
       }
 
       generateId(function(err, id) {
-        redis.set(keyId(id), url, function (err, data) {
+        var mainCallback = function (err, data) {
           if (!err) {
             return cbOk({url: url, id: id});
           } else {
             return cbErr(err);
           }
-        });
+        };
+
+        // prevent spammers and such by erasing records after config.safeModeExpire
+        if (config.safeMode) {
+          redis.multi().set(keyId(id), url, mainCallback).expire([keyId(id), config.safeModeExpire]).exec();
+        } else {
+          redis.set(keyId(id), url, mainCallback);
+        }
       });
     }
 
