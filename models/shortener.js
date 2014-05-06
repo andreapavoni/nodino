@@ -3,7 +3,8 @@
 module.exports = function(config) {
   var
     validUrl = require('valid-url'),
-    redis = require('redis-url').connect(config.redis);
+    redis = require('redis-url').connect(config.redis),
+    urlParser = require('url');
 
   var  redisKey = 'nodino';
 
@@ -43,6 +44,15 @@ module.exports = function(config) {
     });
   };
 
+  var shouldAddProtocol = function (url) {
+    console.log("protocol: " + urlParser.parse(url).protocol);
+    if (!urlParser.parse(url).protocol) {
+        return "http://" + url;
+    }
+
+    return url;
+  };
+
   return {
     findById: function(id, cbOk, cbErr) {
       redis.get(keyId(id), function(err, url) {
@@ -55,6 +65,11 @@ module.exports = function(config) {
     },
 
     create: function(url, cbOk, cbErr) {
+      console.log(url);
+      console.log(shouldAddProtocol(url));
+      url = shouldAddProtocol(url);
+      console.log(url);
+
       if (!validUrl.isWebUri(url)) {
         return cbErr((new Error('Url not valid.')));
       }
