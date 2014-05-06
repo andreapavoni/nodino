@@ -28,7 +28,7 @@ module.exports = function(config) {
       }, function(err) {
         res.status(404);
         res.render('error', {
-          message: err.message,
+          message: '404: Not found.',
           error: err
         });
       });

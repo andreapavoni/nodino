@@ -1,7 +1,7 @@
 'use strict';
 
 exports.notFound = function(req, res, next) {
-  var err = new Error('Not Found');
+  var err = new Error('404: Not found.');
   err.status = 404;
   next(err);
 };
