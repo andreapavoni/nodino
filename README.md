@@ -1,6 +1,6 @@
 # Nodino
 
-An experiment to make a simple web app using [Nodejs](http://nodejs.org), [ExpressJS](http://expressjs.com))[Redis](http://redis.io)
+An experiment to make a simple web app using [Nodejs](http://nodejs.org), [ExpressJS](http://expressjs.com)) and [Redis](http://redis.io)
 
 ## Installation
 
