@@ -45,7 +45,6 @@ module.exports = function(config) {
   };
 
   var shouldAddProtocol = function (url) {
-    console.log("protocol: " + urlParser.parse(url).protocol);
     if (!urlParser.parse(url).protocol) {
         return "http://" + url;
     }
@@ -65,10 +64,7 @@ module.exports = function(config) {
     },
 
     create: function(url, cbOk, cbErr) {
-      console.log(url);
-      console.log(shouldAddProtocol(url));
       url = shouldAddProtocol(url);
-      console.log(url);
 
       if (!validUrl.isWebUri(url)) {
         return cbErr((new Error('Url not valid.')));
