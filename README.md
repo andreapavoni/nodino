@@ -1,6 +1,7 @@
 # Nodino
 
-An experiment to make a simple web app using [Nodejs](http://nodejs.org), [ExpressJS](http://expressjs.com)) and [Redis](http://redis.io)
+An experiment to make a simple web app using [NodeJS](http://nodejs.org), [ExpressJS](http://expressjs.com) and [Redis](http://redis.io).
+In this case, Nodino is an URL shortener, vaguely inspired from http://git.io.
 
 ## Installation
 
