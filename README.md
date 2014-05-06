@@ -1,7 +1,5 @@
 # Nodino
-
-An experiment to make a simple web app using [NodeJS](http://nodejs.org), [ExpressJS](http://expressjs.com) and [Redis](http://redis.io).
-In this case, Nodino is an URL shortener, vaguely inspired from http://git.io.
+An experiment to make a simple web app using [ExpressJS](http://expressjs.com), [React](http://facebook.github.io/react/) and [Redis](http://redis.io).
 
 ## Installation
 
@@ -9,8 +7,9 @@ You'll need a working installation of Redis and NodeJS, then:
 
 * run `npm install`
 * start a Redis server
+* verify/edit settings in `config.js`
 * run `npm start`
-* point your browser to http://0.0.0.0:4000
+* point your browser to `http://0.0.0.0:4000` (or to a different port if you changed it in `config.js`)
 
 ## Contributing
 
