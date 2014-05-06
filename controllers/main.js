@@ -5,13 +5,18 @@ module.exports = function(config) {
 
   return {
     index: function(req, res) {
-      var host = req.protocol + '://' + req.host;
-      res.render('index', {host: host});
+      res.render('index');
     },
 
     create: function(req, res) {
       shortener.create(req.body.url, function(data) {
-        res.json({error: null, data: data});
+        var payload = {
+          url: data.url,
+          id: data.id,
+          host: req.protocol + '://' + req.host
+        };
+
+        res.json({error: null, data: payload});
       }, function(err) {
         res.json({error: err.message, data: null});
       });

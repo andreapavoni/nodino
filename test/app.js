@@ -29,9 +29,10 @@ describe('Web app', function() {
       request.post(host).send({url: url }).end(function(error, res) {
         expect(res).to.exist;
         expect(res.status).to.equal(200);
-        expect(res.body.error).to.equal(null);
+        expect(res.body.error).not.to.exist;
         expect(res.body.data.url).to.equal(url);
-        expect(res.body.data.id).not.to.be(null);
+        expect(res.body.data.id).to.exist;
+        expect(res.body.data.host).to.exist;
         done();
       });
     });
@@ -42,8 +43,8 @@ describe('Web app', function() {
       request.post(host).send({url: url }).end(function(error, res) {
         expect(res).to.exist;
         expect(res.status).to.equal(200);
-        expect(res.body.error).not.to.be(null);
-        expect(res.body.data).to.be(null);
+        expect(res.body.error).to.exist;
+        expect(res.body.data).not.to.exist;
         done();
       });
     });
