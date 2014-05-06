@@ -16,7 +16,7 @@ var config = {
   production: {
     port: process.env.PORT || 4000,
     secret: process.env.SECRET || 'secret',
-    redis: process.env.REDIS_URL || 'redis://3@localhost:6379'
+    redis: process.env.REDIS_URL || process.env.REDISTOGO_URL || 'redis://3@localhost:6379'
   }
 }
 
