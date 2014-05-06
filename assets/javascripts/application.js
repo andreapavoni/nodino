@@ -2,7 +2,7 @@
  * @jsx React.DOM
  */
 
-var Shortener = React.createClass({displayName: 'Shortener',
+var Shortener = React.createClass({
   getInitialState: function() {
     return {data: {url: null, id: null, host: null}};
   },
@@ -57,19 +57,19 @@ var Shortener = React.createClass({displayName: 'Shortener',
   render: function() {
     if(this.state.data && this.state.data.id) {
       return (
-        React.DOM.form( {action:"/", method:"POST", className:"shortener shortened", onSubmit:this.handleRevert}, 
-          React.DOM.input( {ref:"url", className:"shortener__url--output", type:"text", disabled:true} ),
-          React.DOM.input( {type:"submit", className:"shortener__button--revert", value:"New"}),
-          React.DOM.span( {ref:"notification", className:"shortener__notification"}, "Hit Ctrl/Cmd-C to copy to clipboard.")
-        )
+        <form action="/" method='POST' className='shortener shortened' onSubmit={this.handleRevert}>
+          <input ref='url' className='shortener__url--output' type='text' disabled />
+          <input type='submit' className='shortener__button--revert' value='New'/>
+          <span ref='notification' className='shortener__notification'>Hit Ctrl/Cmd-C to copy to clipboard.</span>
+        </form>
       );
     } else {
       return (
-        React.DOM.form( {action:"/", method:"POST", className:"shortener", onSubmit:this.handleSubmit}, 
-          React.DOM.input( {type:"text", ref:"url", name:"url", placeholder:"Enter a URL to shorten...", className:"shortener__url--input"}),
-          React.DOM.input( {type:"submit", className:"shortener__button--submit", value:"Go!"}),
-          React.DOM.span( {ref:"notification", className:"shortener__notification error"})
-        )
+        <form action='/' method='POST' className='shortener' onSubmit={this.handleSubmit}>
+          <input type='text' ref='url' name='url' placeholder='Enter a URL to shorten...' className='shortener__url--input'/>
+          <input type='submit' className='shortener__button--submit' value='Go!'/>
+          <span ref='notification' className='shortener__notification error'></span>
+        </form>
       );
     }
 
@@ -77,6 +77,6 @@ var Shortener = React.createClass({displayName: 'Shortener',
 });
 
 React.renderComponent(
-  Shortener(null ),
+  <Shortener />,
   document.getElementById('app')
 );
