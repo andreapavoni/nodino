@@ -5,6 +5,7 @@ var react = require('gulp-react');
 var stylus = require('gulp-stylus');
 var concat = require('gulp-concat');
 var uglify = require('gulp-uglify');
+var minifyCSS = require('gulp-minify-css');
 var rename = require('gulp-rename');
 var filesize = require('gulp-filesize');
 
@@ -17,6 +18,14 @@ gulp.task('css', ['clean'], function () {
   gulp.src('./assets/stylesheets/application.styl')
     .pipe(stylus())
     .pipe(gulp.dest('./public/stylesheets'))
+    .pipe(filesize())
+    .pipe(minifyCSS({
+      keepSpecialComments:0,
+      processImport: true
+    }))
+    .pipe(rename('application.min.css'))
+    .pipe(gulp.dest('./public/stylesheets'))
+    .pipe(filesize())
     .on('error', gutil.log);
 });
 
