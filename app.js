@@ -12,7 +12,9 @@ const
   httpErrors = require('./middlewares/http-errors'),
   app = express(),
   env = app.get('env'),
+  compress = require('compression')(),
   config = require('./config')(env);
+
 
 // Middlewares
 app.use(favicon());
@@ -20,6 +22,7 @@ app.use(logger());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded());
 app.use(cookieParser());
+app.use(compress);
 app.use(session({secret: config.secret, key: 'session_id', cookie: {maxAge: 60000}}));
 app.use(express.static(path.join(__dirname, 'public')));
 

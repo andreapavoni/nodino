@@ -1,0 +1,23 @@
+{
+  "name": "nodino",
+  "version": "0.0.1",
+  "homepage": "https://github.com/apeacox/nodino",
+  "authors": [
+    "Andrea Pavoni <andrea.pavoni@gmail.com>"
+  ],
+  "description": "Simple URL shortener built with ExpressJS, React and Redis",
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "./assets/bower",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "react": "~0.10.0",
+    "jquery-ui": "~1.10.4"
+  }
+}

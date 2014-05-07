@@ -8,13 +8,8 @@ var uglify = require('gulp-uglify');
 var rename = require('gulp-rename');
 var filesize = require('gulp-filesize');
 
-// var path = require('path');
-
-// var changed = require('gulp-changed');
-// var watch = require('gulp-watch');
-
 gulp.task('clean', function () {
-  return gulp.src('public/', {read: false})
+  return gulp.src('public/*', {read: false})
     .pipe(clean());
 });
 
@@ -26,7 +21,14 @@ gulp.task('css', function () {
 });
 
 gulp.task('js', function() {
-  return gulp.src(['assets/javascripts/vendor/*.js', 'assets/javascripts/*.js'])
+  return gulp.src([
+    'vendor/bower/react/react.js',
+    'vendor/bower/jquery/dist/jquery.js',
+    'vendor/bower/jquery-ui/ui/jquery.ui.core.js',
+    'vendor/bower/jquery-ui/ui/jquery.ui.effect.js',
+    'assets/javascripts/vendor/*.js',
+    'assets/javascripts/*.js'
+    ])
     .pipe(react())
     .pipe(concat('application.js'))
     .pipe(gulp.dest('./public/javascripts'))
