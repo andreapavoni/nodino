@@ -4,6 +4,8 @@ An experiment to make a simple web app using [ExpressJS](http://expressjs.com), 
 ## Demo
 You can find a working demo [here](http://nodino.herokuapp.com/).
 
+**NOTE**: The online demo has a safe-mode that deletes links after 30 minutes, to reduce spam impact.
+
 ## Installation
 
 You'll need a working installation of Redis and NodeJS, then:
