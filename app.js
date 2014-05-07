@@ -11,7 +11,6 @@ const
   session = require('express-session'),
   httpErrors = require('./middlewares/http-errors'),
   app = express(),
-  stylus = require('stylus'),
   env = app.get('env'),
   config = require('./config')(env);
 
@@ -23,15 +22,6 @@ app.use(bodyParser.urlencoded());
 app.use(cookieParser());
 app.use(session({secret: config.secret, key: 'session_id', cookie: {maxAge: 60000}}));
 app.use(express.static(path.join(__dirname, 'public')));
-app.use(stylus.middleware({
-  src: __dirname + '/assets/stylesheets/',
-  dest: __dirname + '/public/stylesheets/',
-
-  compile: function (str, path) {
-    return stylus(str)
-      .set('compress', true);
-  }
-}));
 
 // Views
 app.set('views', path.join(__dirname, 'views'));
