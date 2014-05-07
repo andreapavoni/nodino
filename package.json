@@ -11,7 +11,17 @@
   "devDependencies": {
     "superagent": "~0.18.0",
     "expect.js": "~0.3.1",
-    "mocha": "~1.18.2"
+    "mocha": "~1.18.2",
+    "stylus": "~0.44.0",
+    "gulp": "~3.6.2",
+    "gulp-util": "~2.2.14",
+    "gulp-clean": "~0.2.4",
+    "gulp-concat": "~2.2.0",
+    "gulp-rename": "~1.2.0",
+    "gulp-uglify": "~0.2.1",
+    "gulp-filesize": "~0.0.6",
+    "gulp-stylus": "~1.0.0",
+    "gulp-react": "~0.3.3"
   },
 
   "dependencies": {
@@ -24,7 +34,6 @@
     "redis": "^0.10.1",
     "redis-url": "~0.2.0",
     "express-session": "~1.0.4",
-    "stylus": "~0.44.0",
     "valid-url": "~1.0.9"
   }
 }
