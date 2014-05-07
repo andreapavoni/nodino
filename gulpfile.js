@@ -13,14 +13,14 @@ gulp.task('clean', function () {
     .pipe(clean());
 });
 
-gulp.task('css', function () {
-  gulp.src('./assets/stylesheets/**/*.styl')
+gulp.task('css', ['clean'], function () {
+  gulp.src('./assets/stylesheets/application.styl')
     .pipe(stylus())
     .pipe(gulp.dest('./public/stylesheets'))
     .on('error', gutil.log);
 });
 
-gulp.task('js', function() {
+gulp.task('js', ['clean'], function() {
   return gulp.src([
     'vendor/bower/react/react.js',
     'vendor/bower/jquery/dist/jquery.js',
