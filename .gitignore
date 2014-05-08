@@ -2,3 +2,4 @@ node_modules/*
 *.log
 *.rdb
 vendor/bower/*
+coverage/*

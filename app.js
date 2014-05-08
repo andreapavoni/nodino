@@ -1,7 +1,7 @@
 'use strict';
 
 // Main setup
-const
+var
   express = require('express'),
   path = require('path'),
   favicon = require('static-favicon'),

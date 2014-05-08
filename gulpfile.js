@@ -8,6 +8,8 @@ var uglify = require('gulp-uglify');
 var minifyCSS = require('gulp-minify-css');
 var rename = require('gulp-rename');
 var filesize = require('gulp-filesize');
+var mocha = require('gulp-mocha');
+var istanbul = require('gulp-istanbul');
 
 gulp.task('clean', function () {
   return gulp.src('public/*', {read: false})
@@ -49,5 +51,20 @@ gulp.task('js', ['clean'], function() {
     .on('error', gutil.log)
 });
 
+gulp.task('test', function () {
+  return gulp.src([
+    'controllers/**/*.js',
+    'middlewares/**/*.js',
+    'models/**/*.js',
+    'app.js'
+    ])
+    .pipe(istanbul())
+    .on('end', function () {
+      return gulp.src(['test/**/*.js'])
+        .pipe(mocha())
+        .pipe(istanbul.writeReports());
+    });
+});
 
-gulp.task('default', ['clean', 'js', 'css']);
+gulp.task('assets', ['clean', 'js', 'css']);
+gulp.task('default', ['test']);

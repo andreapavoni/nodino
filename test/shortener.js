@@ -6,7 +6,6 @@ var
   shortener = require('../models/shortener')(config);
 
 describe('Shortener', function() {
-
   var input = {url: 'http://google.com', id: 'abc'};
 
   var output = {
@@ -18,8 +17,7 @@ describe('Shortener', function() {
 
   after(function(done) {
     var redis = require('redis-url').connect(config.redis);
-    redis.flushall();
-    done();
+    redis.flushall(done);
   });
 
   describe('findById()', function() {
@@ -74,5 +72,3 @@ describe('Shortener', function() {
   });
 
 });
-
-
