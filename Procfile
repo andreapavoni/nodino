@@ -1,1 +1,1 @@
-web: node --harmony bin/www
+web: coffee bin/www

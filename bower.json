@@ -17,7 +17,8 @@
     "tests"
   ],
   "dependencies": {
-    "react": "~0.10.0",
-    "jquery-ui": "~1.10.4"
+    "react": "~0.11.1",
+    "jquery-ui": "*",
+    "jquery-flip": "./vendor/js/jquery-flip/jquery.flip.js"
   }
 }

@@ -1,11 +1,9 @@
-#!/usr/bin/env node --harmony
-var
-  app = require('../app'),
-  config = require('../config')(app.settings.env);
+#!/usr/bin/env coffee
 
-var server = app.listen(config.port, function() {
-  console.log('Express server listening on port ' + server.address().port);
-  if (config.safeMode) {
-    console.log('SAFE MODE is active.');
-  }
-});
+app = require("../app")
+config = require('../config')(app.settings.env)
+
+server = app.listen(config.port, ->
+  console.log "Express server listening on port " + server.address().port
+  console.log "SAFE MODE is active."  if config.safeMode
+)
