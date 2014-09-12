@@ -14,6 +14,10 @@ You'll need a working installation of Redis and NodeJS, then:
 * start a Redis server
 * verify/edit settings in `config.js`
 * run `npm start`
+* to run it, you can use one of the following commands:
+  * `npm start`
+  * `coffee bin/www` or `bin/www`
+  * `foreman start` (there's a Procfile ready for [heroku](http://heroku.com))
 * point your browser to `http://0.0.0.0:4000` (or to a different port if you changed it in `config.js`)
 
 ## Contributing
@@ -26,7 +30,7 @@ You'll need a working installation of Redis and NodeJS, then:
 
 ### Testing
 
-* run `npm test`
+* run `npm test` (or just `gulp`)
 
 ## License
 
