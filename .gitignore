@@ -1,5 +1,6 @@
 node_modules/*
 *.log
 *.rdb
-vendor/bower/*
 coverage/*
+tmp/*
+bower_components/*
